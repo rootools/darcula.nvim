@@ -5,7 +5,7 @@ local core = { "base", "syntax", "treesitter", "lsp" }
 local plugins = { "gitsigns", "telescope", "cmp", "blink", "neo-tree", "nvim-tree", "indent-blankline" }
 
 ---@param p table palette from `darcula.palette`
----@param opts? { plugins?: table<string, boolean> } `plugins.<name> = false` disables that plugin's groups
+---@param opts? darcula.Config
 ---@return table<string, vim.api.keyset.highlight>
 return function(p, opts)
   local enabled = opts and opts.plugins or {}
@@ -18,7 +18,7 @@ return function(p, opts)
 
   local groups = {}
   for _, name in ipairs(modules) do
-    for group, spec in pairs(require("darcula.groups." .. name)(p)) do
+    for group, spec in pairs(require("darcula.groups." .. name)(p, opts)) do
       groups[group] = spec
     end
   end

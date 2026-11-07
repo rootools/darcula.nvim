@@ -66,10 +66,25 @@ colorscheme darcula
 
 Calling `setup()` is optional. If you use it, call it **before** `:colorscheme`.
 
+Comments and inline diagnostic messages (LSP virtual text and virtual lines) are italic by default. Override `styles.comments` / `styles.diagnostics` to change this; they accept any highlight attributes (`italic`, `bold`, `underline`, ...):
+
+```lua
+require("darcula").setup({
+  styles = {
+    comments = { italic = false },
+    diagnostics = { italic = false },
+  },
+})
+```
+
 All plugin integrations are enabled by default. Set a plugin to `false` to skip its highlight groups:
 
 ```lua
 require("darcula").setup({
+  styles = {
+    comments = { italic = true },
+    diagnostics = { italic = true },
+  },
   plugins = {
     gitsigns = true,
     telescope = true,

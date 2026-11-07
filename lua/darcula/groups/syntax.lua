@@ -1,10 +1,13 @@
 --- Classic Vim syntax groups.
 ---@param p table palette from `darcula.palette`
+---@param opts? darcula.Config
 ---@return table<string, vim.api.keyset.highlight>
-return function(p)
+return function(p, opts)
+  local comments = opts and opts.styles and opts.styles.comments or {}
+
   return {
     -- Classic syntax
-    Comment = { fg = p.comment },
+    Comment = vim.tbl_extend("force", { fg = p.comment }, comments),
     Constant = { fg = p.constant },
     String = { fg = p.string },
     Character = { fg = p.string },

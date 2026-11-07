@@ -1,7 +1,10 @@
 --- Treesitter captures.
 ---@param p table palette from `darcula.palette`
+---@param opts? darcula.Config
 ---@return table<string, vim.api.keyset.highlight>
-return function(p)
+return function(p, opts)
+  local comments = opts and opts.styles and opts.styles.comments or {}
+
   return {
     -- Treesitter
     ["@variable"] = { fg = p.fg },
@@ -34,7 +37,7 @@ return function(p)
     ["@operator"] = { fg = p.fg },
     ["@punctuation"] = { fg = p.fg },
     ["@punctuation.special"] = { fg = p.keyword },
-    ["@comment"] = { fg = p.comment },
+    ["@comment"] = vim.tbl_extend("force", { fg = p.comment }, comments),
     ["@comment.documentation"] = { fg = p.doc_comment, italic = true },
     ["@comment.error"] = { fg = p.error, bold = true },
     ["@comment.warning"] = { fg = p.warn, bold = true },
