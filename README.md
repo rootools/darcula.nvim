@@ -4,6 +4,8 @@ A Neovim port of the **Islands Darcula** theme from JetBrains IDEs (the default 
 
 The colorscheme is named `darcula`.
 
+![darcula.nvim preview](assets/preview.png)
+
 ## Features
 
 - Classic Darcula syntax colors on the Islands UI palette
