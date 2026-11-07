@@ -1,0 +1,88 @@
+--- Core editor UI: menus, status line, tabs, spelling, diff.
+---@param p table palette from `darcula.palette`
+---@return table<string, vim.api.keyset.highlight>
+return function(p)
+  return {
+    -- Editor
+    Normal = { fg = p.fg, bg = p.bg },
+    NormalNC = { link = "Normal" },
+    NormalFloat = { fg = p.fg_ui, bg = p.bg_popup },
+    FloatBorder = { fg = p.bg_float_border, bg = p.bg_popup },
+    FloatTitle = { fg = p.fg_ui, bg = p.bg_popup, bold = true },
+    FloatFooter = { fg = p.fg_dim, bg = p.bg_popup },
+    Cursor = { fg = p.bg, bg = p.fg_ui },
+    lCursor = { link = "Cursor" },
+    TermCursor = { link = "Cursor" },
+    CursorLine = { bg = p.cursorline },
+    CursorColumn = { bg = p.cursorline },
+    ColorColumn = { bg = p.cursorline },
+    LineNr = { fg = p.line_nr },
+    LineNrAbove = { link = "LineNr" },
+    LineNrBelow = { link = "LineNr" },
+    CursorLineNr = { fg = p.line_nr_caret },
+    CursorLineSign = { bg = p.cursorline },
+    CursorLineFold = { link = "CursorLineSign" },
+    SignColumn = { fg = p.line_nr },
+    FoldColumn = { fg = p.line_nr },
+    Folded = { fg = p.fold_fg, bg = p.fold_bg },
+    Visual = { bg = p.selection },
+    VisualNOS = { bg = p.selection_inactive },
+    Search = { bg = p.search },
+    CurSearch = { bg = p.search_current },
+    IncSearch = { bg = p.search_current },
+    Substitute = { bg = p.search_current },
+    MatchParen = { fg = p.match_paren_fg, bg = p.match_paren_bg, bold = true },
+    NonText = { fg = p.whitespace },
+    Whitespace = { fg = p.whitespace },
+    SpecialKey = { fg = p.whitespace },
+    EndOfBuffer = { fg = p.bg },
+    Conceal = { fg = p.comment },
+    Directory = { fg = p.number },
+    Title = { fg = p.keyword, bold = true },
+    ErrorMsg = { fg = p.error },
+    WarningMsg = { fg = p.warn },
+    MoreMsg = { fg = p.ok },
+    ModeMsg = { fg = p.fg_ui },
+    Question = { fg = p.ok },
+    QuickFixLine = { bg = p.selection_ui },
+    WildMenu = { fg = p.fg_ui, bg = p.selection_ui },
+    WinSeparator = { fg = p.bg_frame },
+    VertSplit = { link = "WinSeparator" },
+    WinBar = { fg = p.fg_dim, bg = p.bg },
+    WinBarNC = { fg = p.fg_dim, bg = p.bg },
+
+    -- Menus
+    Pmenu = { fg = p.fg_ui, bg = p.bg_popup },
+    PmenuSel = { fg = p.fg_ui, bg = p.selection_ui },
+    PmenuKind = { fg = p.fg_dim, bg = p.bg_popup },
+    PmenuKindSel = { fg = p.fg_ui, bg = p.selection_ui },
+    PmenuExtra = { fg = p.comment, bg = p.bg_popup },
+    PmenuExtraSel = { fg = p.fg_dim, bg = p.selection_ui },
+    PmenuMatch = { fg = p.func_decl, bg = p.bg_popup, bold = true },
+    PmenuMatchSel = { fg = p.func_decl, bg = p.selection_ui, bold = true },
+    PmenuSbar = { bg = p.bg_frame },
+    PmenuThumb = { bg = p.bg_lightest },
+
+    -- Status line and tabs ("islands": the window frame is bg_frame)
+    StatusLine = { fg = p.fg_dim, bg = p.bg_frame },
+    StatusLineNC = { fg = p.comment, bg = p.bg_frame },
+    TabLine = { fg = p.fg_ui, bg = p.bg_frame },
+    TabLineFill = { bg = p.bg_frame },
+    TabLineSel = { fg = p.fg_ui, bg = p.tab_selected },
+
+    -- Spelling
+    SpellBad = { undercurl = true, sp = p.error_effect },
+    SpellCap = { undercurl = true, sp = p.warn_effect },
+    SpellRare = { undercurl = true, sp = p.info_effect },
+    SpellLocal = { undercurl = true, sp = p.ok },
+
+    -- Diff
+    DiffAdd = { bg = p.diff_add },
+    DiffChange = { bg = p.diff_change },
+    DiffDelete = { fg = p.git_delete, bg = p.diff_delete },
+    DiffText = { bg = p.diff_text, bold = true },
+    Added = { fg = p.git_add },
+    Changed = { fg = p.git_change },
+    Removed = { fg = p.error },
+  }
+end
