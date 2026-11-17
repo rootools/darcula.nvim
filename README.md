@@ -77,10 +77,17 @@ require("darcula").setup({
 })
 ```
 
+Set `transparent = true` to drop the background of the editor (`Normal`, `NormalNC`) and the window bar, so the terminal background shows through. The status line, tabs, floating windows and popup menus keep their colors:
+
+```lua
+require("darcula").setup({ transparent = true })
+```
+
 All plugin integrations are enabled by default. Set a plugin to `false` to skip its highlight groups:
 
 ```lua
 require("darcula").setup({
+  transparent = false,
   styles = {
     comments = { italic = true },
     diagnostics = { italic = true },

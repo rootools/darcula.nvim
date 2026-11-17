@@ -1,10 +1,13 @@
 --- Core editor UI: menus, status line, tabs, spelling, diff.
 ---@param p table palette from `darcula.palette`
+---@param opts? darcula.Config
 ---@return table<string, vim.api.keyset.highlight>
-return function(p)
+return function(p, opts)
+  local bg = opts and opts.transparent and "NONE" or p.bg
+
   return {
     -- Editor
-    Normal = { fg = p.fg, bg = p.bg },
+    Normal = { fg = p.fg, bg = bg },
     NormalNC = { link = "Normal" },
     NormalFloat = { fg = p.fg_ui, bg = p.bg_popup },
     FloatBorder = { fg = p.bg_float_border, bg = p.bg_popup },
@@ -48,8 +51,8 @@ return function(p)
     WildMenu = { fg = p.fg_ui, bg = p.selection_ui },
     WinSeparator = { fg = p.bg_frame },
     VertSplit = { link = "WinSeparator" },
-    WinBar = { fg = p.fg_dim, bg = p.bg },
-    WinBarNC = { fg = p.fg_dim, bg = p.bg },
+    WinBar = { fg = p.fg_dim, bg = bg },
+    WinBarNC = { fg = p.fg_dim, bg = bg },
 
     -- Menus
     Pmenu = { fg = p.fg_ui, bg = p.bg_popup },

@@ -2,8 +2,9 @@ local M = {}
 
 ---@class darcula.Config
 ---@field styles? { comments?: vim.api.keyset.highlight, diagnostics?: vim.api.keyset.highlight } extra attributes (`italic`, `bold`, ...) for comments and inline diagnostic messages; both are italic by default
+---@field transparent? boolean `true` removes the background of the editor and window bar so the terminal background shows through
 ---@field plugins? table<string, boolean> `<plugin> = false` disables that plugin's highlight groups
-M.config = { styles = { comments = { italic = true }, diagnostics = { italic = true } }, plugins = {} }
+M.config = { transparent = false, styles = { comments = { italic = true }, diagnostics = { italic = true } }, plugins = {} }
 
 --- Sets options. Call it before `:colorscheme darcula`.
 ---@param opts? darcula.Config
