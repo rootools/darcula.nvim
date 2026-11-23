@@ -161,6 +161,8 @@ nvim --cmd "set rtp^=." -c "colorscheme darcula"
 
 Inspect the highlight groups under the cursor with `:Inspect`.
 
+Для C# фиолетовая подсветка обращений к полям и свойствам требует semantic tokens от LSP: тема поддерживает `@lsp.type.field` и `@lsp.type.property`. Одного Treesitter недостаточно, чтобы отличить неявное обращение к полю (`Seed = seed`) от локальной переменной.
+
 ## License
 
 [MIT](LICENSE)

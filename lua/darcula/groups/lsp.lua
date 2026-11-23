@@ -44,6 +44,7 @@ return function(p, opts)
     LspCodeLens = { fg = p.comment },
     LspCodeLensSeparator = { fg = p.comment },
     LspSignatureActiveParameter = { fg = p.param_hint_fg, bg = p.param_hint_bg },
+    ["@lsp.type.field"] = { link = "@variable.member" },
     ["@lsp.mod.deprecated"] = { strikethrough = true },
   }
 end
